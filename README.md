@@ -1,24 +1,30 @@
-# README
+# <!--ここにアプリ名を入力-->
+​StyleSeasons
+## サイト概要
+### サイトテーマ
+<!--何を『目的』とし、どのような『分類』なのかを簡潔に書く-->
+​四季に合わせたコーディネート発信と検索を兼ねたサイト
+### テーマを選んだ理由
+<!--なぜこのようなテーマにしたかを説明する-->
+​情報が多くて探したいものを見つけずらかったり、ゴチャゴチャしてて見えずらいサイトが多く、自分にあったサイトがあまり見つけられなかったから。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### ターゲットユーザ
+<!--誰に使ってもらうかを具体的に記載する-->
+​季節に合わせたファッションを手軽に探したい方。
+•既存のサイトが情報過多で気軽に探したい方。
+### 主な利用シーン
+<!--どのような時に使うのかの状況を記載すること-->
+​•	よりシンプルにコーディネートのサイトを探したいとき。
+  四季のコーディネートを見る場面
+## 設計書
+<!--テーマを設定・提出する時点では不要です-->
+​
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+​
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
