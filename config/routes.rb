@@ -22,7 +22,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
     end
   end
-  scope module: :user do
+  scope module: :users do
     root to: 'cordinates#index'
     get "cordinate/search" => "cordinates#search"
     resources :cordinates, only: [:index, :show]
