@@ -9,9 +9,10 @@ class Admin::CordinatesController < ApplicationController
   end
 
   def create
-    @cordinate = Cordinate.new(cordinate_params)
+    #render plain: current_admin.id
+    @cordinate = Cordinate.new(cordinate_params.merge(:admin_id=>current_admin.id))
     if @cordinate.save!
-      redirect_to admin_cordinate_path(@cordinate)
+      redirect_to admin_path(@cordinate)
     else
       render :new
     end
@@ -41,4 +42,11 @@ class Admin::CordinatesController < ApplicationController
       @cordinates = Cordinate.none
     end
   end
+
+  private
+
+  def cordinate_params
+    params.require(:cordinate).permit(:introduction,:title, :image, :season_id)
+  end
+
 end

@@ -1,0 +1,17 @@
+<div class="container">
+  <h2 class="text-center my-5">コーディネート詳細</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div style="padding-left:20%;">
+        <%= image_tag @cordinate.get_image(300,300) %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <p class="my-4"><strong>コーディネート名 </strong><span style="margin-left:150px;"><%= @cordinate.title %></span></p>
+      <p class="my-4"><strong>コーディネート説明 </strong><span style="margin-left:135px;"><%= @cordinate.introduction %></span></p>
+      <%= link_to '編集する', edit_admin_cordinate_path(@cordinate), class: 'btn btn-success' %>
+       <td><%= @cordinate.season.name %></td>
+       <!--@cordinate.cordinate_items.each-->
+    </div>
+  </div>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_01_13_120430) do
+ActiveRecord::Schema.define(version: 2024_01_20_004223) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,13 +52,24 @@ ActiveRecord::Schema.define(version: 2024_01_13_120430) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "cordinates", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "title", null: false
-    t.text "introduction", null: false
+  create_table "cordinate_items", force: :cascade do |t|
+    t.integer "cordinate_id", null: false
+    t.integer "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_cordinates_on_user_id"
+    t.index ["cordinate_id"], name: "index_cordinate_items_on_cordinate_id"
+    t.index ["item_id"], name: "index_cordinate_items_on_item_id"
+  end
+
+  create_table "cordinates", force: :cascade do |t|
+    t.integer "admin_id"
+    t.string "title", null: false
+    t.text "introduction", null: false
+    t.integer "season_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_cordinates_on_admin_id"
+    t.index ["season_id"], name: "index_cordinates_on_season_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -89,15 +100,6 @@ ActiveRecord::Schema.define(version: 2024_01_13_120430) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["cordinate_id"], name: "index_reviews_on_cordinate_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
-  end
-
-  create_table "season_cordinates", force: :cascade do |t|
-    t.integer "cordinate_id", null: false
-    t.integer "season_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["cordinate_id"], name: "index_season_cordinates_on_cordinate_id"
-    t.index ["season_id"], name: "index_season_cordinates_on_season_id"
   end
 
   create_table "seasons", force: :cascade do |t|

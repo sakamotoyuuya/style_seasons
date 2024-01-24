@@ -1,3 +1,3 @@
 class Season < ApplicationRecord
-  has_many :season_cordinates, dependent: :destroy
+  has_many :cordinates, dependent: :destroy
 end

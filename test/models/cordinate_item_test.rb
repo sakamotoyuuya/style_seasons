@@ -1,6 +1,6 @@
 require "test_helper"
 
-class SeasonCordinateTest < ActiveSupport::TestCase
+class CordinateItemTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
