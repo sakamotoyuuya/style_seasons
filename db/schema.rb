@@ -73,13 +73,11 @@ ActiveRecord::Schema.define(version: 2024_01_20_004223) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer "cordinate_id", null: false
     t.string "name", null: false
     t.integer "price", null: false
     t.text "message", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["cordinate_id"], name: "index_items_on_cordinate_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -115,6 +113,7 @@ ActiveRecord::Schema.define(version: 2024_01_20_004223) do
     t.datetime "reset_password_sent_at"
     t.string "name", null: false
     t.integer "phone", null: false
+    t.boolean "is_active", default: true, null: false
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

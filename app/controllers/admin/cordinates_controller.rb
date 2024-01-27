@@ -46,7 +46,7 @@ class Admin::CordinatesController < ApplicationController
   private
 
   def cordinate_params
-    params.require(:cordinate).permit(:introduction,:title, :image, :season_id)
+    params.require(:cordinate).permit(:introduction,:title, :image, :season_id, item_ids: [])
   end
 
 end

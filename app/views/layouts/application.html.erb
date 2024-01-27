@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>StyleSeasons</title>
+    <title>Style seasons</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,88 @@
   </head>
 
   <body>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">style seasons</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <% if user_signed_in? %>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+               <%= link_to users_show_path, class:"nav-link text-light" do %>
+                 <i class="fa-solid fa-house"></i> マイページ
+               <% end %>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"> <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"> <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do %>
+                <i class="fa-solid fa-sign-out-alt"></i> ログアウト
+              <% end %>
+            </li>
+
+          <% elsif admin_signed_in? %>
+
+            <li class="nav-item">
+              <%= link_to new_admin_item_path, class:"nav-link text-light" do %>
+                <i class="fa-solid fa-sign-out-alt"></i> 商品登録
+              <% end %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to new_admin_cordinate_path, class:"nav-link text-light" do %>
+                <i class="fa-solid fa-sign-out-alt"></i> コーディネート登録
+              <% end %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to admin_season_path, class:"nav-link text-light" do %>
+                <i class="fa-solid fa-sign-out-alt"></i> 季節登録
+              <% end %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to destroy_admin_session_path, method: :delete, class:"nav-link text-light" do %>
+                <i class="fa-solid fa-sign-out-alt"></i> ログアウト
+              <% end %>
+            </li>
+
+            <% else %>
+
+              <li class="nav-item">
+                <%= link_to new_user_registration_path, class:"nav-link text-light" do %>
+                  <i class="fa-solid fa-sign-out-alt"></i> 新規登録
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to new_user_session_path, class:"nav-link text-light" do %>
+                  <i class="fa-solid fa-sign-out-alt"></i> ログイン
+                <% end %>
+              </li>
+            <% end %>
+
+          </ul>
+          <% unless admin_signed_in? %>
+            <%= form_with url:  cordinate_search_path, method: :get, local: true, class:"form-inline my-2 my-lg-0" do |f| %>
+              <%= f.text_field :title, placeholder:"search",class:"form-control mr-sm-2" %>
+              <%= f.submit "検索", class:"btn btn-outline-success my-2 my-sm-0" %>
+            <% end %>
+          <% end %>
+        </div>
+      </nav>
     <%= yield %>
+    <footer>
+
+    </footer>
   </body>
 </html>

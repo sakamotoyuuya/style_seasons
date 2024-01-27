@@ -12,6 +12,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.datetime :reset_password_sent_at
       t.string :name, null: false
       t.integer :phone, null: false
+      t.boolean :is_active, null: false, default: true
       ## Rememberable
       t.datetime :remember_created_at
 

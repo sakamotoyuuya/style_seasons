@@ -3,7 +3,7 @@
 
       <%= form_with model: @user, url: user_registration_path do |f| %>
 
-        <%= render "user/shared/error_messages", resource: resource %>
+        <%= render "users/shared/error_messages", resource: resource %>
     <table class="">
         <tr>
         <td>名前 </td>
@@ -45,5 +45,5 @@
   </table>
   <% end %>
   <h3><strong>既に登録済みの方</strong></h3>
-  <%= render "public/shared/links" %> からログインしてください
+  <%= render "users/shared/links" %> からログインしてください
 </div>

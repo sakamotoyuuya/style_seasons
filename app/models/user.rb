@@ -7,4 +7,17 @@ class User < ApplicationRecord
   has_many :cordinates, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :season_cordinates, dependent: :destroy
+
+  def customer_status
+    if is_active == false
+      "退会"
+    else
+      "有効"
+    end
+  end
+
+  #退会したユーザーがログインできないようにする
+  def active_for_authentication?
+    super && (is_active == true)
+  end
 end

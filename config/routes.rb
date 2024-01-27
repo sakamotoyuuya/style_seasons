@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   devise_for :users,skip: [:passwords], controllers: {
-  registrations: "user/registrations",
-  sessions: 'user/sessions'
+  registrations: "users/registrations",
+  sessions: 'users/sessions'
 }
 # 管理者用
 # URL /admin/sign_in ...
@@ -27,7 +27,11 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get "cordinate/search" => "cordinates#search"
     resources :cordinates, only: [:index, :show]
     resources :items, only: [:index]
-    resources :items, only: [:edit, :show, :update]
+    get "users/show" => "users#show"
+    get "users/information/edit" => "users#edit"
+    patch "users/information" => "users#update"
+    patch 'users/unsubscribe' => "users#unsubscribe"
+    get 'users/withdraw' => "users#withdraw"
 
 
   end

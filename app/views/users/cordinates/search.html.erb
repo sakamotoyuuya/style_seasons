@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+        <h1>コーディネート検索結果</h1>
+         <h2>コーディネート一覧 (全<%= @cordinates.count %>件)</h2>
+         <% if [] != @cordinates %>
+           <div class="container row">
+             <% @cordinates.each do |cordinate| %>
+            <div class="pr-5 pb-5 col-3">
+              <%= link_to cordinate_path(cordinate) do %>
+                <%= image_tag cordinate.get_image(150,100) %>
+              <% end %>
+               <div><%= cordinate.title %></div>
+            </div>
+       <% end %>
+       <% else %>
+       <h1 class= text-center>0件でした</h1>。
+       <% end %>
+       </div>
+     </div>
+   </div>
+</div>

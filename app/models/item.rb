@@ -1,8 +1,8 @@
 class Item < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  belongs_to :cordinate_item
-  
+  has_many :cordinate_items, dependent: :destroy
+
   def self.search_for(content, method)
     if method == 'perfect'
       Item.where(title: content)
@@ -14,7 +14,7 @@ class Item < ApplicationRecord
       Item.where('title LIKE ?', '%' + content + '%')
     end
   end
-  
+
   has_one_attached :image
   def get_image(width,height)
     unless image.attached?

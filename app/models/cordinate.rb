@@ -1,5 +1,6 @@
 class Cordinate < ApplicationRecord
    has_many :cordinate_items, dependent: :destroy
+   has_many :items, through: :cordinate_items
    belongs_to :admin
    belongs_to :season
 
