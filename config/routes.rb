@@ -27,7 +27,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     root to: 'cordinates#index'
     get "cordinate/search" => "cordinates#search"
     resources :cordinates, only: [:index, :show]
-    resources :items, only: [:index]
+    get "cordinate/:id/items", to: "items#index", as: "items"
     get "users/show" => "users#show"
     get "users/information/edit" => "users#edit"
     patch "users/information" => "users#update"

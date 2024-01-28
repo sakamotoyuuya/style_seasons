@@ -1,15 +1,17 @@
 <div class="container">
-  <div class="row-2"></div>
-  <div class="row">
-       <div class="col-md-4">
+  <%= link_to 'この商品を見る', items_path(@cordinate), class: 'btn btn-success' %>
+  <h2 class="text-center my-5">コーディネート詳細</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
       <div style="padding-left:20%;">
         <%= image_tag @cordinate.get_image(300,200) %>
       </div>
     </div>
     <div class="col-md-6">
-      <h3 class="my-4"><span style="margin-left:150px;"><%= @cordinate.title %></span></h3>
-      <p class="my-4"><span style="margin-left:135px;"><%= @cordinate.introduction %></span></p>
-      <%#= form_with model: @cordinate,url:cordinates_path do |f| %>
+      <p class="my-4"><strong>コーディネート名 </strong><span style="margin-left:150px;"><%= @cordinate.title %></span></p>
+      <p class="my-4"><strong>コーディネート説明 </strong><span style="margin-left:135px;"><%= @cordinate.introduction %></span></p>
+      <p class="my-4"><strong>コーディネート季節 </strong><span style="margin-left:135px;"><%= @cordinate.season.name %></span></p>
+      <%= form_with model: @cordinate,url:cordinates_path do |f| %>
       <%= f.hidden_field :cordinate_id, :value => @cordinate.id %>
       <p><%= f.submit 'いいね', class: 'btn btn-success' %></p>
       <% end %>
