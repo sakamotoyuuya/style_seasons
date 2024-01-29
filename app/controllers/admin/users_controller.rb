@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
-  
+    before_action :authenticate_admin!
+
   def index
     @users = User.all.where(is_active: true).page(params[:page])
     # @user = User.find(params[:id])
@@ -12,7 +13,7 @@ class Admin::UsersController < ApplicationController
     reset_session
     redirect_to root_path
   end
-  
+
   private
 
   def user_params
