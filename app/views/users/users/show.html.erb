@@ -22,6 +22,17 @@
               <td><%= @user.email %></td>
             </tr>
           </table>
+      <table class="table">
+        <tbody>
+          <% @like_cordinates.each do |cordinate| %>
+          <tr>
+            <td>
+              <%= link_to cordinate.title, cordinate_path(cordinate) %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

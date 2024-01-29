@@ -12,7 +12,8 @@
 
   <body>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">style seasons</a>
+        <!--<a class= href="#">style seasons</a>-->
+        <%= link_to "style seasons", root_path, class: "mb-1 navbar-brand " %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -44,20 +45,26 @@
           <% elsif admin_signed_in? %>
 
             <li class="nav-item">
-              <%= link_to new_admin_item_path, class:"nav-link text-light" do %>
-                <i class="fa-solid fa-sign-out-alt"></i> 商品登録
+              <%= link_to admin_items_path, class:"nav-link text-light" do %>
+                <i class="fa-solid fa-sign-out-alt"></i> 商品一覧
               <% end %>
             </li>
 
             <li class="nav-item">
-              <%= link_to new_admin_cordinate_path, class:"nav-link text-light" do %>
-                <i class="fa-solid fa-sign-out-alt"></i> コーディネート登録
+              <%= link_to admin_path, class:"nav-link text-light" do %>
+                <i class="fa-solid fa-sign-out-alt"></i> コーディネート一覧
               <% end %>
             </li>
 
             <li class="nav-item">
               <%= link_to admin_seasons_path, class:"nav-link text-light" do %>
                 <i class="fa-solid fa-sign-out-alt"></i> 季節登録
+              <% end %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to admin_users_path, class:"nav-link text-light" do %>
+                <i class="fa-solid fa-sign-out-alt"></i> ユーザー一覧
               <% end %>
             </li>
 
@@ -92,7 +99,16 @@
       </nav>
     <%= yield %>
     <footer>
-
+      <div class='container mt-5'>
+      	<div class='row'>
+        	<div class='mx-auto'>
+        		<p> <%= link_to root_path do %>
+        		　トップに戻る
+                <% end %>
+            </p>
+        	</div>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

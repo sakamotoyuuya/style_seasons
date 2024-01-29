@@ -1,8 +1,10 @@
 class Users::UsersController < ApplicationController
-   # before_action :authenticate_user!
+    before_action :authenticate_user!
 
   def show
     @user = current_user
+    likes = Like.where(user_id: @user.id).pluck(:cordinate_id)
+    @like_cordinates = Cordinate.find(likes)
   end
 
   def edit

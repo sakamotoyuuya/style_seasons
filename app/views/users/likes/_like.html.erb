@@ -1,0 +1,11 @@
+<% if cordinate.liked_by?(current_user) %>
+  <%= link_to cordinate_likes_path(cordinate), method: :delete, remote: true, data: {"turbolinks" => false} do %>
+    <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+    <%= cordinate.likes.count %> いいね
+  <% end %>
+<% else %>
+  <%= link_to cordinate_likes_path(cordinate), method: :post, remote: true, data: {"turbolinks" => false}  do %>
+    <i class="fas fa-heart" aria-hidden="true"></i>
+    <%= cordinate.likes.count %> いいね
+  <% end %>
+<% end %>

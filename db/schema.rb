@@ -81,23 +81,12 @@ ActiveRecord::Schema.define(version: 2024_01_20_004223) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.string "likeable_type"
-    t.integer "likeable_id"
+    t.integer "cordinate_id"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable"
+    t.index ["cordinate_id"], name: "index_likes_on_cordinate_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
-  end
-
-  create_table "reviews", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "cordinate_id", null: false
-    t.text "message", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["cordinate_id"], name: "index_reviews_on_cordinate_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "seasons", force: :cascade do |t|

@@ -1,20 +1,14 @@
 class Cordinate < ApplicationRecord
    has_many :cordinate_items, dependent: :destroy
    has_many :items, through: :cordinate_items
+   has_many :likes, dependent: :destroy
    belongs_to :admin
    belongs_to :season
 
- def self.search_for(content, method)
-    if method == 'perfect'
-      Cordinate.where(title: content)
-    elsif method == 'forward'
-      Cordinate.where('title LIKE ?', content + '%')
-    elsif method == 'backward'
-      Cordinate.where('title LIKE ?', '%' + content)
-    else
-      Cordinate.where('title LIKE ?', '%' + content + '%')
-    end
- end
+  def liked_by?(user)
+    likes.exists?(user_id: user.id)
+  end
+
    has_one_attached :image
   def get_image(width,height)
     unless image.attached?

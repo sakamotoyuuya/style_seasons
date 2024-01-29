@@ -1,5 +1,5 @@
 class Admin::CordinatesController < ApplicationController
-
+  before_action :authenticate_admin!
   def index
     @cordinates = Cordinate.page(params[:page])
   end
@@ -12,7 +12,7 @@ class Admin::CordinatesController < ApplicationController
     #render plain: current_admin.id
     @cordinate = Cordinate.new(cordinate_params.merge(:admin_id=>current_admin.id))
     if @cordinate.save!
-      redirect_to admin_path(@cordinate)
+      redirect_to admin_path
     else
       render :new
     end
@@ -33,6 +33,11 @@ class Admin::CordinatesController < ApplicationController
     else
       render :edit
     end
+  end
+  def destroy
+    @cordinate = Cordinate.find(params[:id])
+    @cordinate.destroy
+    redirect_to admin_users_path
   end
 
   def search

@@ -1,29 +1,21 @@
 <div class="container">
-      <div class="row">
-        <div class='col-2'>
-        <div class="border">
-        <span class="border">
+    <div>
+        <div class="border border-dark my-3 p-3">
+          <%= form_tag(root_path, method: :get) do %>
           <p>季節検索</p>
-        </span>
-        </div>
-        <div class="border2">
-        <span class="border">
-          <tbody>
-          <% @seasons.each do |season| %>
-          <tr>
-            <td>
-              <ul>
-                <li><%= link_to season.name, cordinates_path(season_id: season.id), class: "text-secondary" %></li>
-              </ul>
-            </td>
-          </tr>
+            <ul class="row">
+              <%#= f.label :season_id, class: 'form_season_label' %>
+              <%# @seasons.each do |season| %>
+               <%#= f.collection_radio_buttons, link_to season.name, cordinates_path(season_id: season.id), class: "text-secondary" %>
+               <%= collection_radio_buttons nil, :season_id, Season.all, :id, :name, {checked: params[:season_id]} %>
+              <%# end %>
+            </ul>
+            <%= submit_tag "検索", name: nil %>
+            <%= link_to "リセット", root_path %>
           <% end %>
-          </tbody>
-        </span>
         </div>
-        </div>
-      <div class="col-9">
-         <h2>コーディネート一覧 (全<%= Cordinate.all.count %>件)</h2>
+      <div>
+         <h2>コーディネート一覧 (全<%= @cordinates.count %>件)</h2>
            <div class="container row">
              <% @cordinates.each do |cordinate| %>
             <div class="pr-5 pb-5 col-3">
