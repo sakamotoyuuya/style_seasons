@@ -7,42 +7,39 @@
     </div>
     <div class="col-6">
       <%= form_with model: @cordinate, url: admin_cordinates_path do |f| %>
-        <table>
-          <tbody>
-              <tr>
-               <td>コーディネート画像</td>
-               <td>
+
+              <div class="d-flex">
+               <div>コーディネート画像</div>
+               <div>
                  <%= f.file_field :image, accept: "image/*" %>
-               </td>
-              </tr>
-              <tr>
-                <td>タイトル</td>
-                <td>
+               </div>
+              </div>
+              <div class="d-flex">
+                <div>タイトル</div>
+                <div>
                   <%= f.text_field :title  %>
-                </td>
-              </tr>
-              <tr>
-               <td>コーディネート説明</td>
-               <td>
-                   <%= f.text_area :introduction, rows:'6', placeholder: "コーディネート説明"  %>
-               </td>
-              </tr>
-              <tr>
-                <td>季節</td>
-                <td>
+                </div>
+              </div>
+              <div class="d-flex">
+               <div>コーディネート説明</div>
+               <div>
+                   <%= f.text_area :introduction , rows:'6', placeholder: "コーディネート説明"  %>
+               </div>
+              </div>
+              <div class="d-flex">
+                <div>季節</div>
+                <div>
                    <%= f.collection_select(:season_id, Season.all, :id, :name) %>
-                </td>
-              </tr>
-          </tbody>
-        </table>
+                </div>
+              </div>
         </div>
     <div class="col-3"></div>
         <div>コーディネート紐付け</div>
           <div class="form-group">
-            <%= f.label :商品, class: 'control-label' %>
-              <div class="wrap">
+            <span>商品</span>
+              <div>
                 <div class="imaging">
-                  <div class="checkbox">
+                  <div class="checkbox wrap">
                     <%= f.collection_check_boxes(:item_ids, Item.all, :id, :name) do |b| %>
                       <%= b.label { b.check_box + b.text } %><%= image_tag b.object.image, size: "120x80" %>
                     <% end %>

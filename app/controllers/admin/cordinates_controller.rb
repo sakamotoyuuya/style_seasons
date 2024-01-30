@@ -37,7 +37,7 @@ class Admin::CordinatesController < ApplicationController
   def destroy
     @cordinate = Cordinate.find(params[:id])
     @cordinate.destroy
-    redirect_to admin_users_path
+    redirect_to admin_path
   end
 
   def search

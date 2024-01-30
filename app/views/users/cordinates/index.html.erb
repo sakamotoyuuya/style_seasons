@@ -4,14 +4,10 @@
           <%= form_tag(root_path, method: :get) do %>
           <p>季節検索</p>
             <ul class="row">
-              <%#= f.label :season_id, class: 'form_season_label' %>
-              <%# @seasons.each do |season| %>
-               <%#= f.collection_radio_buttons, link_to season.name, cordinates_path(season_id: season.id), class: "text-secondary" %>
                <%= collection_radio_buttons nil, :season_id, Season.all, :id, :name, {checked: params[:season_id]} %>
-              <%# end %>
             </ul>
-            <%= submit_tag "検索", name: nil %>
-            <%= link_to "リセット", root_path %>
+            <%= submit_tag "検索", name: nil , class: "btn-gradient-3d-simple"%>
+            <%= link_to "リセット", root_path, class: "btn-gradient-radius" %>
           <% end %>
         </div>
       <div>
