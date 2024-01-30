@@ -4,7 +4,7 @@
   </div>
   <div class="row">
    <div class="col-3" >
-    </div>
+   </div>
         <div class="col-8">
           <%= form_with model:@item,url:admin_items_path do |f| %>
               <div class="d-flex">
@@ -31,7 +31,6 @@
                   <%= f.number_field :price, rows:'3', placeholder: "1000" %>
                 </div>
               </div>
-        </div>
                 <%= f.submit '新規登録',class: "btn btn-success" %>
                 <% end %>
       </div>
