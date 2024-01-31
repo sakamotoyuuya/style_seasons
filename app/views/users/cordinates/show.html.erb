@@ -11,9 +11,9 @@
       <p class="my-4"><strong>コーディネート名 </strong><span style="margin-left:150px;"><%= @cordinate.title %></span></p>
       <p class="my-4"><strong>コーディネート説明 </strong><span style="margin-left:135px;"><%= @cordinate.introduction %></span></p>
       <p class="my-4"><strong>コーディネート季節 </strong><span style="margin-left:135px;"><%= @cordinate.season.name %></span></p>
-     <p id="like_buttons_<%= @cordinate.id %>">
-      <%= render "users/likes/like", cordinate: @cordinate %>
-    </p>
+      <p id="like_buttons_<%= @cordinate.id %>">
+        <%= render "users/likes/like", cordinate: @cordinate %>
+      </p>
     </div>
   </div>
 </div>
